@@ -176,3 +176,7 @@ print(first_list)
 print(second_list)
 print(third_list)
 
+3
+"this is a string"
+2.8
+True
