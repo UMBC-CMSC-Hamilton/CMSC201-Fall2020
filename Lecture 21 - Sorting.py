@@ -1,4 +1,5 @@
 import random
+import time
 
 """
 Sorting takes a list, and ensures that it is "in order"
@@ -109,8 +110,6 @@ def selection_sort_way_cool(a_list):
         []
     """
     for i in range(len(a_list)):
-        print(a_list)
-        input('continue?')
         min_index = find_min_index(a_list, i)
         swap(a_list, min_index, i)
 
@@ -209,7 +208,80 @@ def quick_sort_test():
 # complex_bubble_test()
 # selection_sort_test()
 # insertion_sort_test()
-quick_sort_test()
+# quick_sort_test()
+
+def sort_time_test(sorting, n):
+    for i in range(5):
+        my_list = [random.randint(0, 100) for _ in range(n)]
+        start = time.time()
+        sorting(my_list)
+        end = time.time()
+        # ns is 10^(-9) seconds
+        print('The time was', end - start)
+
+
+def merge(a_list, b_list):
+    """
+    Assume that a_list and b_list are sorted
+    """
+    merged_list = []
+    a_index = 0
+    b_index = 0
+    while a_index < len(a_list) and b_index < len(b_list):
+        if a_list[a_index] < b_list[b_index]:
+            merged_list.append(a_list[a_index])
+            a_index += 1
+        else:
+            merged_list.append(b_list[b_index])
+            b_index += 1
+
+    while a_index < len(a_list):
+        merged_list.append(a_list[a_index])
+        a_index += 1
+    while b_index < len(b_list):
+        merged_list.append(b_list[b_index])
+        b_index += 1
+
+    return merged_list
+
+
+def merge_sort(a_list):
+    if len(a_list) <= 1:
+        return a_list
+    else:
+        merge_a = merge_sort(a_list[: len(a_list) // 2])
+        merge_b = merge_sort(a_list[len(a_list) // 2:])
+        full_merge = merge(merge_a, merge_b)
+        # print(merge_a, merge_b, full_merge)
+        return full_merge
+
+
+def merge_sort_test():
+    for i in range(10):
+        print('Test', i + 1)
+        my_list = [random.randint(0, 100) for _ in range(20)]
+        print(my_list)
+        my_list = merge_sort(my_list)
+        print(my_list)
+        print(is_sorted(my_list))
+
+
+def time_test():
+    print('size 1000')
+    sort_time_test(merge_sort, 1000)
+    print('size 10000')
+    sort_time_test(merge_sort, 10000)
+    print('size 100000')
+    sort_time_test(merge_sort, 100000)
+    print('size 1000000')
+    sort_time_test(merge_sort, 1000000)
+    print('size 10000000')
+    sort_time_test(merge_sort, 10000000)
+
+
+# print(merge([1, 2, 3, 6, 8, 9, 11], [2, 3, 5, 7, 8, 9, 10]))
+# merge_sort_test()
+time_test()
 """
     We learned to test our code, sometimes.
     We learned bubble sort, selection sort, insertion sort, quick sort
