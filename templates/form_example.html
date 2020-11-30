@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<table lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Example</title>
+</head>
+<body>
+<form method=post enctype=multipart/form-data>
+<table>
+    <tr> <td>What is your Name?</td> <td><input type="text" name="name"></td></tr>
+    <tr> <td>What is your Quest?</td> <td><input type="text" name="quest"></td></tr>
+    <tr> <td>What is your Favourite Colour?</td> <td><input type="text" name="color"></td> </tr>
+</table>
+<input type=submit value="Submit Answers">
+</form>
+<table>
+{% for answer in answers %}
+    <tr><td>{{answer[0]}}</td><td>{{answer[1]}}</td><td>{{answer[2]}}</td></tr>
+{% endfor %}
+</table>
+</body>
+</html>

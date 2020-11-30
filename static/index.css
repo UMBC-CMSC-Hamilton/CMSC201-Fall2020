@@ -1,0 +1,10 @@
+body {
+    background-color: black;
+    color: white;
+    width: 50%;
+}
+
+.input_form {
+    background-color: darkblue;
+    color: white;
+}

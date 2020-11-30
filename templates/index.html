@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Flask Tutorial</title>
+</head>
+<link rel="stylesheet" href="../static/index.css">
+<body>
+This is a new body.
+<button type="button" onclick="document.getElementById('display').innerHTML=Date()">Get Date</button>
+<button type="button" onclick="determineAnswer()">Click to Combine Name</button>
+
+<table>
+    <tr>
+        <td>First Name: </td> <td><input type="edit" name="First Name" id="first_name"></td>
+    </tr>
+    <tr>
+        <td>Last Name: </td><td><input type="edit" name="Last Name" id="last_name"></td>
+    </tr>
+</table>
+
+<p id="display"></p>
+<p id="display2"></p>
+
+</body>
+</html>
+<script>
+    function determineAnswer() {
+        document.getElementById('display2').innerHTML = document.getElementById('first_name').value + ' ' + document.getElementById('last_name').value
+    }
+</script>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Element Example</title>
+</head>
+<link rel="stylesheet" href="../static/index.css">
+<body>
+<button type="button" id="create_new" onclick="createNewElement()">Click To Add Thing</button>
+<input type="text" id="component_name">
+<div id="starting_div"></div>
+</body>
+</html>
+
+<script>
+    function createNewElement() {
+        let new_div = document.createElement("div");
+        new_div.setAttribute("class", "test_class");
+        let text = document.getElementById("component_name").value;
+        new_div.appendChild(document.createTextNode(text));
+        let last_div = document.getElementById("starting_div");
+        document.body.appendChild(new_div);
+    }
+</script>
